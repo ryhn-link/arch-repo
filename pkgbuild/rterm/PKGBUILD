@@ -1,0 +1,39 @@
+# Maintainer: Ryhon <ryhon@ryhn.link>
+pkgname=rterm
+pkgver=0.1
+pkgrel=1
+pkgdesc="Multi-tab GTK3 terminal"
+arch=('x86_64' 'i686')
+url="https://github.com/ryhon0/rterm"
+license=('GPL3')
+depends=('gtk3' 'vte3' 'gtksourceview3' 'yajl')
+makedepends=('make' 'dub' 'gcc-d')
+optdepends=('python-nautilus: "Open with RTerm" option in Nautilus')
+provides=('rterm')
+conflicts=('rterm-git' 'rterm-bin')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ryhon0/rterm/archive/v$pkgver.tar.gz"
+		"yajl-d::git+https://github.com/ryhon0/yajl-d")
+md5sums=('7eb60ba4398803ecb5dfb90e2c305068'
+         'SKIP')
+
+build() {
+	mkdir -p "$srcdir/$pkgname-$pkgver/lib"
+	rm -rf "$srcdir/$pkgname-$pkgver/lib/yajl-d"
+	mv -f "$srcdir/yajl-d" "$srcdir/$pkgname-$pkgver/lib"
+	cd "$srcdir/$pkgname-$pkgver"
+	make publish
+	strip rterm
+}
+
+package() {
+	cd "$srcdir/$pkgname-$pkgver"
+
+	mkdir -p "$pkgdir/usr/bin/"
+	install rterm "$pkgdir/usr/bin/"
+
+	mkdir -p "$pkgdir/usr/share/applications/"
+	cp extra/linux/rterm.desktop "$pkgdir/usr/share/applications"
+	
+	mkdir -p "$pkgdir/usr/share/nautilus-python/extensions"
+	cp extra/linux/open-rterm.py "$pkgdir/usr/share/nautilus-python/extensions"
+}

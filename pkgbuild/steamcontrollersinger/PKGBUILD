@@ -1,0 +1,19 @@
+# Maintainer: Ryhon <ryhon@ryhn.link>
+pkgname=steamcontrollersinger
+pkgver=1.8
+pkgrel=1
+pkgdesc="Play MIDI files on your Steam Controller"
+arch=('x86_64' 'i686')
+url="https://github.com/Roboron3042/SteamControllerSinger"
+license=('BSD')
+depends=('libusb')
+provides=('steamcontrollersinger')
+conflicts=('steamcontrollersinger-git' 'steamcontrollersinger-bin')
+source=("steamcontrollersinger::https://github.com/Roboron3042/SteamControllerSinger/releases/download/v1.8/steamcontrollersinger")
+md5sums=('3d21026b77b9470891c7b883981248ab')
+
+package() {
+	cd "$srcdir"
+	mkdir -p "$pkgdir/usr/bin/"
+	install steamcontrollersinger "$pkgdir/usr/bin/"
+}
