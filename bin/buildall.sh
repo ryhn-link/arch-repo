@@ -6,6 +6,6 @@ for f in *
 do
     echo "Building $f..."
     cd "$f"
-    ../../buildpkg.sh
+    ../../bin/buildpkg.sh
     cd ..
 done
