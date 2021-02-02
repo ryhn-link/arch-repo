@@ -1,0 +1,26 @@
+# Maintainer: Ryhon <ryhon@ryhn.link>
+pkgname=sam
+pkgver=1
+pkgrel=1
+pkgdesc="Software Automatic Mouth - Tiny Speech Synthesizer"
+arch=('x86_64' 'i686')
+url="https://github.com/vidarh/SAM"
+license=('Abandonware')
+depends=('sdl')
+makedepends=('make' 'gcc')
+provides=('sam')
+conflicts=('sam-git' 'sam-bin')
+source=("sam.tar.gz::https://github.com/ryhon0/sam/archive/v$pkgver.tar.gz")
+md5sums=('7c933b6c34898c2f25cb2902edb45880')
+
+build() {
+	cd "$srcdir/$pkgname-$pkgver"
+	make
+	strip sam
+}
+
+package() {
+	cd "$srcdir/$pkgname-$pkgver"
+	mkdir -p "$pkgdir/usr/bin/"
+	install sam "$pkgdir/usr/bin/"
+}
