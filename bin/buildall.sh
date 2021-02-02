@@ -2,9 +2,10 @@
 
 cd pkgbuild
 
-foreach f ( * )
+for f in *
+do
     echo "Building $f..."
     cd "$f"
     ../../buildpkg.sh
     cd ..
-end
+done
