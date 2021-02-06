@@ -1,0 +1,10 @@
+server {
+	root /path/to/repo/public ;
+	index index.html;
+	server_name arch.ryhn.link;
+	
+	location /pkg {
+        alias /path/to/repo/pkg;
+        autoindex on;
+	}
+}

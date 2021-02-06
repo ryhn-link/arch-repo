@@ -13,10 +13,13 @@
     <h1>ryhn.link Arch Linux repository</h1>
     <p>Install in a single line</p>
     <code>curl https://arch.ryhn.link/install.sh | sudo bash</code>
-    <p>Or manually append this to /etc/pacman.conf</p>
+    <p>Or manually :</p>
+    <p>Append this to /etc/pacman.conf</p>
     <code>[ryhn]
-        SigLevel = Never
         Server = https://arch.ryhn.link/pkg/$arch</code>
+    <p>Import and trust the GPG key</p>
+    <code>gpg --recv-keys 3BC1065444B0109A
+        sudo pacman-key --lsign-key 3BC1065444B0109A</code>
 </body>
 
 </html>
