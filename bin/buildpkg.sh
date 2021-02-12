@@ -33,6 +33,9 @@ do
     mkdir -p ../../pkg/$a
     repo-add ../../pkg/$a/ryhn.db.tar.gz "$PKG"
     mv "$PKG" "../../pkg/$a/"
+    mkdir -p ../../pkg/
+    repo-add ../../pkg/ryhn.db.tar.gz "$PKG"
+    mv "$PKG" "../../pkg/"
     # What the hell is the .sig file, do I need it?
     # mv "$PKG.sig" "../../pkg/$a/"
 done
