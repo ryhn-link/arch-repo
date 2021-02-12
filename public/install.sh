@@ -5,6 +5,7 @@ then
     echo '
 
 [ryhn]
+SigLevel = Optional TrustedOnly
 Server = https://arch.ryhn.link/pkg/' >> /etc/pacman.conf
 
     echo
