@@ -17,6 +17,13 @@ do
     updpkgsums
     makepkg -s --sign -f
 
+    # Don't sign package if .nosign file exists
+    if test -f ".nosign"; then
+        makepkg -s --nosign -f
+    else
+        makepkg -s --sign -f
+    fi
+
     PKG=$(ls $pkgname-$pkgver-$pkgrel-$a$PKGEXT)
 
     echo
