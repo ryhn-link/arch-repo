@@ -7,8 +7,6 @@ My own Arch repository for packages that are not on the AUR, packages that take 
 │ ├ buildall.sh		- build all packages 
 │ └ buildpkg.sh		- build all packages 
 ├ pkg/				- folder that contains all packages
-│ ├ any/			- packages for any architecture
-│ └ x86_64/			- x86_64 packages
 ├ pkgbuild/			- pkgbuilds for packages
 │ └ .../
 ├ public/			- static HTTP files
