@@ -16,10 +16,11 @@
     <p>Or manually :</p>
     <p>Append this to /etc/pacman.conf</p>
     <code>[ryhn]
-        Server = https://arch.ryhn.link/pkg/$arch</code>
-    <p>Import and trust the GPG key</p>
-    <code>gpg --recv-keys 3BC1065444B0109A
-        sudo pacman-key --lsign-key 3BC1065444B0109A</code>
+        Server = https://arch.ryhn.link/pkg/</code>
+    <p>Install keyring</p>
+    <code>
+        sudo pacman -Sy ryhn-keyring
+    </code>
 </body>
 
 </html>
