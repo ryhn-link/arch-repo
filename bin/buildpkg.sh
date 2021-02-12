@@ -6,6 +6,7 @@ source /etc/makepkg.conf
 for a in ${arch[@]}
 do
     if [ $a != "x86_64" ] || [ $a == "any" ]
+    if [ $a != "x86_64" ] && [ $a != "any" ]
     then
         echo "Building for $a not supported, skipping"
         break
