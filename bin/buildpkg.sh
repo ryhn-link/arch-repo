@@ -5,17 +5,15 @@ source /etc/makepkg.conf
 
 for a in ${arch[@]}
 do
-    if [ $a != "x86_64" ] || [ $a == "any" ]
     if [ $a != "x86_64" ] && [ $a != "any" ]
     then
         echo "Building for $a not supported, skipping"
-        break
+        continue
     fi
 
     echo "Building '$pkgname' v$pkgver-$pkgrel for $a"
 
     updpkgsums
-    makepkg -s --sign -f
 
     # Don't sign package if .nosign file exists
     if test -f ".nosign"; then
@@ -30,9 +28,6 @@ do
     echo $PKG
     echo
     
-    mkdir -p ../../pkg/$a
-    repo-add ../../pkg/$a/ryhn.db.tar.gz "$PKG"
-    mv "$PKG" "../../pkg/$a/"
     mkdir -p ../../pkg/
     repo-add ../../pkg/ryhn.db.tar.gz "$PKG"
     mv "$PKG" "../../pkg/"
